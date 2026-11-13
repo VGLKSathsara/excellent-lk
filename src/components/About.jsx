@@ -28,15 +28,11 @@ export default function About() {
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`social-link social-link--${s.id}`}
+                  className={`social-btn social-btn--${s.id}`}
+                  aria-label={`${s.label}: ${s.handle}`}
+                  title={`${s.label} – ${s.handle}`}
                 >
-                  <span className="social-link__icon">
-                    <SocialIcon name={s.id} />
-                  </span>
-                  <span className="social-link__text">
-                    <strong>{s.label}</strong>
-                    <small>{s.handle}</small>
-                  </span>
+                  <SocialIcon name={s.id} />
                 </a>
               </li>
             ))}

@@ -155,21 +155,18 @@ ul { margin: 0; padding: 0; list-style: none; }
 .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
 .connect { grid-column: 1 / -1; margin-top: 20px; }
 .connect__title { font-size: 18px; margin-bottom: 14px; }
-.connect__list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.social-link {
-  display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #fff;
-  border: 1px solid var(--line); border-radius: var(--radius); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+.connect__list { display: flex; flex-wrap: wrap; gap: 14px; }
+.social-btn {
+  width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--ink);
+  box-shadow: 0 8px 18px rgba(20, 20, 20, .15); transition: transform .15s ease, box-shadow .2s ease;
 }
-.social-link:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--orange); }
-.social-link__icon { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--ink); }
-.social-link__icon svg { width: 20px; height: 20px; }
-.social-link--telegram .social-link__icon { background: #229ed9; }
-.social-link--whatsapp .social-link__icon { background: #25d366; }
-.social-link--tiktok .social-link__icon { background: #111; }
-.social-link--facebook .social-link__icon { background: #1877f2; }
-.social-link__text { display: grid; min-width: 0; }
-.social-link__text strong { font-size: 14px; }
-.social-link__text small { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.social-btn:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 12px 24px rgba(20, 20, 20, .25); }
+.social-btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.social-btn svg { width: 24px; height: 24px; }
+.social-btn--telegram { background: #229ed9; }
+.social-btn--whatsapp { background: #25d366; }
+.social-btn--tiktok { background: #111; }
+.social-btn--facebook { background: #1877f2; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .stat { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 12px; text-align: center; box-shadow: var(--shadow); }
 .stat strong { display: block; font-size: 30px; color: var(--orange); letter-spacing: -1px; }
@@ -239,7 +236,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ============ Responsive ============ */
 @media (max-width: 960px) {
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .connect__list { grid-template-columns: repeat(2, 1fr); }
   .about { grid-template-columns: 1fr; }
   .hero .paperwave { width: 70vw; opacity: .5; }
 }
@@ -273,7 +269,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 480px) {
   .grid--4 { grid-template-columns: 1fr; }
   .grid--services { grid-template-columns: 1fr; }
-  .connect__list { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr; }
 }
 
