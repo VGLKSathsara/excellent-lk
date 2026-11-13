@@ -34,6 +34,7 @@ export const SERVICES = [
     text: "A trading workspace to size positions from your risk, journal trades, track wallet changes and review your progress.",
     url: "https://lost-size-calculator-frontend.vercel.app",
     cta: "Open Service",
+    telegram: "https://t.me/PremiumLotCalculator",
   },
 ];
 
