@@ -105,6 +105,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin-top: 22px; font-size: clamp(38px, 6vw, 72px); font-weight: 500; letter-spacing: -2px; line-height: 1.05; color: var(--ink);
 }
 .hero__brand { font-family: var(--font-brand); font-style: italic; font-weight: 800; color: var(--orange); letter-spacing: -1px; }
+.hero__ext { color: var(--ink); }
 .hero__text { margin-top: 18px; max-width: 560px; font-size: 16px; line-height: 1.6; color: var(--muted); }
 .hero__cta { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
