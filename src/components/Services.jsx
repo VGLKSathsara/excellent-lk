@@ -7,6 +7,12 @@ const ICONS = {
       <path d="M8 7h8M8 12h2M12 12h2M16 12h0M8 16h2M12 16h2M16 16h0" />
     </>
   ),
+  gift: (
+    <>
+      <rect x="3" y="8" width="18" height="4" rx="1" />
+      <path d="M5 12v8h14v-8M12 8v12M12 8c-1.5-4-5.5-4-5.5-1.5S10 8 12 8zM12 8c1.5-4 5.5-4 5.5-1.5S14 8 12 8z" />
+    </>
+  ),
 };
 
 function TelegramIcon() {

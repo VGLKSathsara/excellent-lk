@@ -44,6 +44,13 @@ export const SERVICES = [
     cta: "Open Service",
     telegram: "https://t.me/PremiumLotCalculator",
   },
+  {
+    icon: "gift",
+    title: "LY Sweet & Fancy House",
+    text: "Online shop in Kataragama for traditional sweets, pooja items, toys and gifts. Order easily through WhatsApp.",
+    url: "https://l-y-sweet-house.vercel.app/",
+    cta: "Visit Shop",
+  },
 ];
 
 export const PRICES = [
