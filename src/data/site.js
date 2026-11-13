@@ -24,6 +24,13 @@ export const ABOUT = {
     { value: "50+", label: "Clients" },
     { value: "24/7", label: "Support" },
   ],
+  // Shown as "Connect with us" in the About section.
+  socials: [
+    { id: "telegram", label: "Telegram", handle: "@excellent_lk", url: "https://t.me/excellent_lk" },
+    { id: "whatsapp", label: "WhatsApp", handle: "+94 70 371 4386", url: "https://wa.me/94703714386" },
+    { id: "tiktok", label: "TikTok", handle: "@excellentlk", url: "https://www.tiktok.com/@excellentlk" },
+    { id: "facebook", label: "Facebook", handle: "Follow our page", url: "https://www.facebook.com/share/1ECv43UeP1/" },
+  ],
 };
 
 // Add new services here – each one becomes a clickable card in the SERVICE section.

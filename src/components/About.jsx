@@ -1,4 +1,5 @@
 import { ABOUT } from "../data/site.js";
+import SocialIcon from "./SocialIcons.jsx";
 
 export default function About() {
   return (
@@ -17,6 +18,30 @@ export default function About() {
             </li>
           ))}
         </ul>
+
+        <div className="connect">
+          <h3 className="connect__title">Connect with us</h3>
+          <ul className="connect__list">
+            {ABOUT.socials.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`social-link social-link--${s.id}`}
+                >
+                  <span className="social-link__icon">
+                    <SocialIcon name={s.id} />
+                  </span>
+                  <span className="social-link__text">
+                    <strong>{s.label}</strong>
+                    <small>{s.handle}</small>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
