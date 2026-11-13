@@ -26,11 +26,15 @@ export const ABOUT = {
   ],
 };
 
+// Add new services here – each one becomes a clickable card in the SERVICE section.
 export const SERVICES = [
-  { icon: "web", title: "Web Design", text: "Modern, fast websites that match your brand." },
-  { icon: "code", title: "Development", text: "React-powered apps built to scale with you." },
-  { icon: "growth", title: "Digital Marketing", text: "Reach the right customers and grow steadily." },
-  { icon: "support", title: "Support", text: "Maintenance and help when you need it." },
+  {
+    icon: "calculator",
+    title: "Premium Lot Calculator",
+    text: "A trading workspace to size positions from your risk, journal trades, track wallet changes and review your progress.",
+    url: "https://lost-size-calculator-frontend.vercel.app",
+    cta: "Open Service",
+  },
 ];
 
 export const PRICES = [
