@@ -17,7 +17,11 @@ export default function Hero() {
         </span>
 
         <h1 className="hero__title">
-          {HERO.titleTop} <span className="hero__brand">{HERO.titleBrand}</span>
+          {HERO.titleTop}{" "}
+          <span className="hero__brand">
+            {HERO.titleBrand}
+            <span className="hero__ext">{HERO.titleExt}</span>
+          </span>
         </h1>
         <p className="hero__text">{HERO.text}</p>
 

@@ -12,7 +12,8 @@ export const SECTION_IDS = NAV.map((n) => n.id);
 export const HERO = {
   badge: "Fast · Smart · Reliable",
   titleTop: "Welcome to",
-  titleBrand: "Excellent.lk",
+  titleBrand: "Excellent",
+  titleExt: ".lk",
   text: "Your digital partner in Sri Lanka. We build, grow and support your online presence with speed and precision.",
 };
 
