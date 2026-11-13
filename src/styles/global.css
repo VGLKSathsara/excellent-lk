@@ -165,7 +165,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: transform .2s ease, box-shadow .2s ease; }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.card--link { display: block; cursor: pointer; }
+.card--link { position: relative; display: block; cursor: pointer; }
+.card__stretch::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.card__telegram {
+  position: absolute; right: 22px; bottom: 20px; z-index: 2; width: 40px; height: 40px;
+  display: grid; place-items: center; border-radius: 50%; background: #229ed9; color: #fff;
+  box-shadow: 0 6px 16px rgba(34, 158, 217, .35); transition: transform .15s ease, box-shadow .2s ease;
+}
+.card__telegram:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 22px rgba(34, 158, 217, .45); }
+.card__telegram svg { width: 20px; height: 20px; }
 .card--link:hover { border-color: var(--orange); }
 .card__cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; font-size: 14px; font-weight: 600; color: var(--orange); }
 .card--link:hover .card__cta { color: var(--orange-600); }
