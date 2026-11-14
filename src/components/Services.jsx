@@ -33,7 +33,7 @@ export default function Services() {
           <h2 className="section__title">Our services</h2>
         </Reveal>
 
-        <div className="grid grid--services">
+        <div className="grid grid--services" data-live>
           {SERVICES.map((s, i) => (
             <Reveal key={s.title} delay={i * 130} className="cell">
               <article className="card card--link">

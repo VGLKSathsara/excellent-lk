@@ -6,11 +6,13 @@ import Prices from "./components/Prices.jsx";
 import Footer from "./components/Footer.jsx";
 import useActiveSection from "./hooks/useActiveSection.js";
 import useReveal from "./hooks/useReveal.js";
+import useOffscreenPause from "./hooks/useOffscreenPause.js";
 import { SECTION_IDS } from "./data/site.js";
 
 export default function App() {
   const active = useActiveSection(SECTION_IDS);
   useReveal();
+  useOffscreenPause();
 
   return (
     <>

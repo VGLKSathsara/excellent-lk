@@ -16,7 +16,7 @@ export default function Prices() {
           <h2 className="section__title">Simple, clear pricing</h2>
         </Reveal>
 
-        <div className="grid grid--3">
+        <div className="grid grid--3" data-live>
           {PRICES.map((p, i) => (
             <Reveal key={p.name} delay={i * 130} className="cell">
               <article className={`plan ${p.featured ? "plan--featured" : ""}`}>

@@ -10,7 +10,10 @@ const go = (e, id) => {
 export default function Hero() {
   const ref = useRef(null);
 
-  // Mouse parallax (desktop only). Sets --mx / --my in [-1, 1] on the hero.
+  // Mouse parallax (desktop only). Smooth easing loop that moves only the few
+  // elements marked with data-depth="dx,dy[,baseX,baseY]" using the GPU-friendly
+  // `translate` property. It stops by itself once everything has settled, so it
+  // costs nothing while the mouse is still.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -18,20 +21,42 @@ export default function Hero() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!fine || reduce) return;
 
-    let raf = 0;
+    const items = [...el.querySelectorAll("[data-depth]")].map((node) => {
+      const [dx, dy, bx = 0, by = 0] = node.dataset.depth.split(",").map(Number);
+      return { node, dx, dy, bx, by, x: bx, y: by };
+    });
+
+    let tx = 0, ty = 0, raf = 0, running = false;
+    const frame = () => {
+      let moving = false;
+      for (const it of items) {
+        const gx = it.bx + tx * it.dx;
+        const gy = it.by + ty * it.dy;
+        it.x += (gx - it.x) * 0.08;
+        it.y += (gy - it.y) * 0.08;
+        if (Math.abs(gx - it.x) > 0.04 || Math.abs(gy - it.y) > 0.04) moving = true;
+        it.node.style.translate = `${it.x.toFixed(2)}px ${it.y.toFixed(2)}px`;
+      }
+      running = moving;
+      raf = moving ? requestAnimationFrame(frame) : 0;
+    };
+    const kick = () => {
+      if (!running) {
+        running = true;
+        raf = requestAnimationFrame(frame);
+      }
+    };
     const onMove = (e) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--mx", (((e.clientX - r.left) / r.width - 0.5) * 2).toFixed(3));
-        el.style.setProperty("--my", (((e.clientY - r.top) / r.height - 0.5) * 2).toFixed(3));
-      });
+      tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      ty = (e.clientY / window.innerHeight - 0.5) * 2;
+      kick();
     };
     const onLeave = () => {
-      el.style.setProperty("--mx", 0);
-      el.style.setProperty("--my", 0);
+      tx = 0;
+      ty = 0;
+      kick();
     };
-    el.addEventListener("mousemove", onMove);
+    el.addEventListener("mousemove", onMove, { passive: true });
     el.addEventListener("mouseleave", onLeave);
     return () => {
       cancelAnimationFrame(raf);
@@ -41,7 +66,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="hero" ref={ref}>
+    <section id="home" className="hero" ref={ref} data-live>
       <PaperWave />
 
       <div className="hero__inner">
@@ -69,12 +94,14 @@ export default function Hero() {
 
         <div className="hero__stage rise" style={{ "--i": 4 }} aria-hidden="true">
           <span className="ring ring--1" />
-          <span className="ring ring--2"><i className="ring__spin" /></span>
-          <img src="/logo-mark.png" alt="" className="hero__logo" width="640" height="519" />
+          <span className="ring ring--2" />
+          <span className="orbit"><i /></span>
+          <span className="hero__glow" />
+          <img src="/logo-mark.png" alt="" className="hero__logo" width="640" height="519" data-depth="-16,-10" />
           <span className="hero__shadow" />
-          <span className="hex hex--1" />
-          <span className="hex hex--2" />
-          <span className="hex hex--3" />
+          <span className="hex hex--1" data-depth="28,18" />
+          <span className="hex hex--2" data-depth="-32,-20" />
+          <span className="hex hex--3" data-depth="20,-14" />
         </div>
       </div>
 
