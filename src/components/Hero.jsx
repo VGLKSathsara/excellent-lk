@@ -95,7 +95,6 @@ export default function Hero() {
         <div className="hero__stage rise" style={{ "--i": 4 }} aria-hidden="true">
           <span className="ring ring--1" />
           <span className="ring ring--2" />
-          <span className="orbit"><i /></span>
           <span className="hero__glow" />
           <img src="/logo-mark.png" alt="" className="hero__logo" width="640" height="519" data-depth="-16,-10" />
           <span className="hero__shadow" />
