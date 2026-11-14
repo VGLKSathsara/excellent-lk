@@ -30,7 +30,7 @@ Requires Node 18+.
 | **Hero** | Staggered entrance, floating fox logo with mouse parallax (desktop), orange paper-cut wave, static decorative rings, scroll-down hint |
 | **About** | Intro text, animated stats, **Connect with us** icon buttons (Telegram, WhatsApp, TikTok, Facebook) |
 | **Service** | Clickable service cards that open in a new tab (see [Services](#services-live)) |
-| **Prices** | Three plan cards; "Choose …" scrolls to the contact icons |
+| **Prices** | **Trade Tool Set** price list: Starter $2, Popular $5 (most popular), Pro $10, each with ✓ / ✕ features; "Choose …" scrolls to the contact icons |
 | **Footer** | Brand + copyright |
 | **Animation** | Scroll reveal, count-up numbers, hover effects – all pause off-screen and switch off for `prefers-reduced-motion` |
 | **Performance** | Measured at 60 fps in a headless test browser (see [Performance](#performance-notes)) |
@@ -43,7 +43,6 @@ Requires Node 18+.
 
 ### Still placeholder (needs real content)
 - About text and the stats (`100+ Projects`, `50+ Clients`, `24/7 Support`) in `src/data/site.js`
-- All prices show `LKR 0` and the plan feature lists are samples
 - Facebook button label says "Follow our page" (no page name yet)
 - "Get Started" and "Choose …" both just scroll the page – no checkout or contact form yet
 
@@ -65,7 +64,7 @@ Almost everything is edited in **`src/data/site.js`** – no component changes n
 | Change About text / stats | `ABOUT.text`, `ABOUT.stats` |
 | Change social links | `ABOUT.socials` (`id` must be `telegram`, `whatsapp`, `tiktok` or `facebook`) |
 | Add a service | add an object to `SERVICES` (below) |
-| Change prices | `PRICES` |
+| Change prices / plans | `PRICING` (title + plans; each feature is `{ label, included, note? }`) |
 | Change nav items | `NAV` (each `id` must match a section `id`) |
 
 **Add a service** – it becomes a clickable card automatically:
@@ -150,10 +149,11 @@ Work happens on a branch and goes to `main` through a pull request:
 | #7 | Removed login, desktop UX fixes, animations |
 | #8 | Animation lag fix (60 fps) |
 | #10 | Removed stray orbiting dot from the hero |
+| #11 | Hero corner text now "Sri Lanka"; new Trade Tool Set price list |
 
 ## Roadmap ideas
 
-- Real About story, stats and prices
+- Real About story and stats; confirm the middle plan's name (currently "Popular")
 - Contact section or floating WhatsApp button
 - More services (just add to `SERVICES`)
 - SEO basics: social share image, `sitemap`/`robots`, page title per section

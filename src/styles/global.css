@@ -289,10 +289,22 @@ ul { margin: 0; padding: 0; list-style: none; }
 @keyframes glow { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
 .plan h3 { font-size: 18px; }
 .plan__price { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
-.plan small { color: var(--muted); }
 .plan ul { margin: 18px 0 24px; display: grid; gap: 10px; flex: 1; }
-.plan li { font-size: 14px; color: var(--ink-2); padding-left: 24px; position: relative; }
-.plan li::before { content: "✓"; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+.plan li { font-size: 15px; color: var(--ink-2); padding-left: 30px; position: relative; line-height: 1.4; }
+.plan li::before {
+  position: absolute; left: 0; top: 0; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%;
+  font-size: 11px; font-weight: 700; line-height: 1;
+}
+.plan li.is-yes::before { content: "✓"; background: var(--orange-100); color: var(--orange-600); }
+.plan li.is-no { color: #a3a3a3; }
+.plan li.is-no::before { content: "✕"; background: #f1f1f1; color: #b0b0b0; }
+.plan__note { font-style: normal; font-weight: 600; color: var(--orange-600); margin-left: 6px; font-size: 13px; }
+.plan__badge {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%); padding: 5px 14px; border-radius: 999px;
+  background: var(--orange); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .3px; white-space: nowrap;
+  box-shadow: 0 6px 14px rgba(255, 106, 0, .35);
+}
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 .footer { border-top: 1px solid var(--line); padding: 28px 0; background: #fff; }
 .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }

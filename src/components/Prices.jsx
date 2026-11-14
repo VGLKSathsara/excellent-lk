@@ -1,4 +1,4 @@
-import { PRICES } from "../data/site.js";
+import { PRICING } from "../data/site.js";
 import Reveal from "./Reveal.jsx";
 
 // "Choose" buttons take the visitor to the contact links in the About section.
@@ -13,19 +13,23 @@ export default function Prices() {
       <div className="container">
         <Reveal>
           <span className="eyebrow">Prices</span>
-          <h2 className="section__title">Simple, clear pricing</h2>
+          <h2 className="section__title">{PRICING.title}</h2>
         </Reveal>
 
         <div className="grid grid--3" data-live>
-          {PRICES.map((p, i) => (
+          {PRICING.plans.map((p, i) => (
             <Reveal key={p.name} delay={i * 130} className="cell">
               <article className={`plan ${p.featured ? "plan--featured" : ""}`}>
+                {p.badge && <span className="plan__badge">{p.badge}</span>}
                 <h3>{p.name}</h3>
                 <div className="plan__price">{p.price}</div>
-                <small>{p.note}</small>
                 <ul>
                   {p.features.map((f) => (
-                    <li key={f}>{f}</li>
+                    <li key={f.label} className={f.included ? "is-yes" : "is-no"}>
+                      <span className="sr-only">{f.included ? "Included: " : "Not included: "}</span>
+                      {f.label}
+                      {f.note && <em className="plan__note">({f.note})</em>}
+                    </li>
                   ))}
                 </ul>
                 <a

@@ -106,7 +106,7 @@ export default function Hero() {
 
       <div className="hero__corner hero__corner--left rise" style={{ "--i": 5 }}>
         <span className="hero__corner-icon">★</span>
-        <span>Colombo,<br />Sri Lanka</span>
+        <span>Sri Lanka</span>
       </div>
       <div className="hero__corner hero__corner--right rise" style={{ "--i": 5 }}>
         <span className="chip">⚡</span>
