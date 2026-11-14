@@ -53,24 +53,35 @@ export const SERVICES = [
   },
 ];
 
-export const PRICES = [
-  {
-    name: "Starter",
-    price: "LKR 0",
-    note: "Placeholder price",
-    features: ["Single-page website", "Mobile friendly", "Basic SEO"],
-  },
-  {
-    name: "Business",
-    price: "LKR 0",
-    note: "Placeholder price",
-    features: ["Multi-section website", "Contact forms", "Analytics setup", "Priority support"],
-    featured: true,
-  },
-  {
-    name: "Pro",
-    price: "LKR 0",
-    note: "Placeholder price",
-    features: ["Custom features", "User login", "Admin tools", "Dedicated support"],
-  },
-];
+// Price list. Each feature: { label, included, note? }  (included: true = tick, false = cross).
+export const PRICING = {
+  title: "Trade Tool Set",
+  plans: [
+    {
+      name: "Starter",
+      price: "$2",
+      features: [
+        { label: "Chart skin pro", included: true },
+        { label: "Premium lot calculator", included: false },
+      ],
+    },
+    {
+      name: "Popular",
+      badge: "Most popular",
+      price: "$5",
+      featured: true,
+      features: [
+        { label: "Chart skin pro", included: true },
+        { label: "Premium lot calculator", note: "30 Day", included: true },
+      ],
+    },
+    {
+      name: "Pro",
+      price: "$10",
+      features: [
+        { label: "Chart skin pro", included: true },
+        { label: "Premium lot calculator", note: "Life time", included: true },
+      ],
+    },
+  ],
+};
