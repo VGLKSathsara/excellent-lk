@@ -1,6 +1,6 @@
 # Excellent.lk – website foundation
 
-Single-page React (Vite) site. Navigation scrolls between sections (HOME | ABOUT | SERVICE | PRICES) – no extra pages, so nothing extra to load. Login opens as a popup.
+Single-page React (Vite) site. Navigation scrolls between sections (HOME | ABOUT | SERVICE | PRICES) – no extra pages, so nothing extra to load. 
 
 ## Run
 
@@ -17,8 +17,8 @@ npm run preview  # preview the build
 public/            logo-mark.png, logo.png (transparent, cropped)
 src/
   data/site.js     all text/content (edit here first)
-  components/      Header, Hero, PaperWave, About, Services, Prices, Footer, LoginModal
-  hooks/           useActiveSection (highlights current nav item)
+  components/      Header, Hero, PaperWave, About, Services, Prices, Footer, Reveal, SocialIcons
+  hooks/           useActiveSection (current nav item), useReveal (scroll animations)
   styles/global.css  colour tokens at the top (:root)
 ```
 
@@ -31,5 +31,5 @@ src/
 ## Next steps
 
 - Replace placeholder text and prices in `src/data/site.js`
-- Connect real auth in `LoginModal.jsx` (`handleSubmit`)
+- Add login later only when there is a real backend for it (the popup was removed for now)
 - Add a contact section / WhatsApp button, then split into routes only if needed
