@@ -160,8 +160,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* rings fade out at the top so they never run through the buttons */
-/* Rings are STATIC (a masked + animated element is re-rendered every frame = lag).
-   The only moving part is the small orbiting dot, which is its own GPU layer. */
+/* Rings are STATIC and purely decorative (a masked + animated element is re-rendered every frame = lag). */
 .hero__stage { --r1: 440px; --r2: 620px; }
 .ring {
   position: absolute; left: 50%; top: 50%; border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%);
@@ -169,17 +168,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .ring--1 { width: var(--r1); height: var(--r1); border: 1px solid rgba(0, 0, 0, .09); }
 .ring--2 { width: var(--r2); height: var(--r2); border: 1px dashed rgba(255, 106, 0, .28); }
-.orbit {
-  position: absolute; left: 50%; top: 50%; width: var(--r2); height: var(--r2); margin: calc(var(--r2) / -2) 0 0 calc(var(--r2) / -2);
-  pointer-events: none; will-change: transform; animation: spin 40s linear infinite;
-}
-.orbit i {
-  position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%;
-  background: var(--orange); box-shadow: 0 0 0 6px rgba(255, 106, 0, .15); animation: orbitFade 40s linear infinite;
-}
-/* the dot hides while it passes the top of the ring (behind the headline/buttons) */
-@keyframes orbitFade { 0%, 10% { opacity: 0; } 16%, 84% { opacity: 1; } 90%, 100% { opacity: 0; } }
-@keyframes spin { to { transform: rotate(360deg); } }
 .hero__glow {
   position: absolute; left: 50%; top: 52%; width: 420px; height: 300px; transform: translate(-50%, -50%); pointer-events: none;
   background: radial-gradient(closest-side, rgba(255, 106, 0, .2), transparent);
@@ -342,7 +330,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .hero { padding-bottom: 60px; }
   .hero__stage { height: 300px; }
   .hero__stage { --r1: 340px; }
-  .ring--2, .orbit { display: none; }
+  .ring--2 { display: none; }
   .hero__corner, .hero__scroll { display: none; }
   .section { padding: 70px 0; }
 }
