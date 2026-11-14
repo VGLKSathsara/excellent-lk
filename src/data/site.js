@@ -51,6 +51,13 @@ export const SERVICES = [
     url: "https://l-y-sweet-house.vercel.app/",
     cta: "Visit Shop",
   },
+  {
+    icon: "stay",
+    title: "Kadadev Sadaluva",
+    text: "Guesthouse and event venue in Kataragama New Town, near the Devalaya. AC and non-AC rooms, halls for groups and jeep safaris to Yala.",
+    url: "https://kadadev-sadaluva.vercel.app/",
+    cta: "View Stay",
+  },
 ];
 
 // Price list. Each feature: { label, included, note? }  (included: true = tick, false = cross).

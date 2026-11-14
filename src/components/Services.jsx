@@ -8,6 +8,12 @@ const ICONS = {
       <path d="M8 7h8M8 12h2M12 12h2M16 12h0M8 16h2M12 16h2M16 16h0" />
     </>
   ),
+  stay: (
+    <>
+      <path d="M3 20V6M3 12h18v8M21 12V9a2 2 0 0 0-2-2h-8v5" />
+      <circle cx="7" cy="9.5" r="1.6" />
+    </>
+  ),
   gift: (
     <>
       <rect x="3" y="8" width="18" height="4" rx="1" />
