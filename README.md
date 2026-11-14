@@ -40,6 +40,8 @@ Requires Node 18+.
    https://lost-size-calculator-frontend.vercel.app
 2. **LY Sweet & Fancy House** – sweets, pooja items, toys and gifts shop in Kataragama, orders via WhatsApp.
    https://l-y-sweet-house.vercel.app/
+3. **Kadadev Sadaluva** – guesthouse and event venue in Kataragama New Town (rooms, halls, jeep safaris).
+   https://kadadev-sadaluva.vercel.app/
 
 ### Still placeholder (needs real content)
 - About text and the stats (`100+ Projects`, `50+ Clients`, `24/7 Support`) in `src/data/site.js`
@@ -71,7 +73,7 @@ Almost everything is edited in **`src/data/site.js`** – no component changes n
 
 ```js
 {
-  icon: "gift",                     // "calculator" or "gift" (add more in Services.jsx ICONS)
+  icon: "gift",                     // "calculator", "gift" or "stay" (add more in Services.jsx ICONS)
   title: "My New Service",
   text: "One or two sentences about it.",
   url: "https://example.com",
@@ -150,6 +152,7 @@ Work happens on a branch and goes to `main` through a pull request:
 | #8 | Animation lag fix (60 fps) |
 | #10 | Removed stray orbiting dot from the hero |
 | #11 | Hero corner text now "Sri Lanka"; new Trade Tool Set price list |
+| #12 | Third service: Kadadev Sadaluva |
 
 ## Roadmap ideas
 
