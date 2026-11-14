@@ -27,7 +27,7 @@ Requires Node 18+.
 | Area | What exists |
 |---|---|
 | **Header** | Logo + `HOME · ABOUT · SERVICE · PRICES`, a black pill that slides to the active section, scroll-progress bar, "Get Started" button, mobile burger menu |
-| **Hero** | Staggered entrance, floating fox logo with mouse parallax (desktop), orange paper-cut wave, orbiting dot, scroll-down hint |
+| **Hero** | Staggered entrance, floating fox logo with mouse parallax (desktop), orange paper-cut wave, static decorative rings, scroll-down hint |
 | **About** | Intro text, animated stats, **Connect with us** icon buttons (Telegram, WhatsApp, TikTok, Facebook) |
 | **Service** | Clickable service cards that open in a new tab (see [Services](#services-live)) |
 | **Prices** | Three plan cards; "Choose …" scrolls to the contact icons |
@@ -149,6 +149,7 @@ Work happens on a branch and goes to `main` through a pull request:
 | #6 | Second service: LY Sweet & Fancy House |
 | #7 | Removed login, desktop UX fixes, animations |
 | #8 | Animation lag fix (60 fps) |
+| #10 | Removed stray orbiting dot from the hero |
 
 ## Roadmap ideas
 
