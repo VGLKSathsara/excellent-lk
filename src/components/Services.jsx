@@ -1,4 +1,5 @@
 import { SERVICES } from "../data/site.js";
+import Reveal from "./Reveal.jsx";
 
 const ICONS = {
   calculator: (
@@ -27,37 +28,42 @@ export default function Services() {
   return (
     <section id="service" className="section section--tint">
       <div className="container">
-        <span className="eyebrow">Service</span>
-        <h2 className="section__title">Our services</h2>
+        <Reveal>
+          <span className="eyebrow">Service</span>
+          <h2 className="section__title">Our services</h2>
+        </Reveal>
+
         <div className="grid grid--services">
-          {SERVICES.map((s) => (
-            <article key={s.title} className="card card--link">
-              <span className="card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  {ICONS[s.icon]}
-                </svg>
-              </span>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
+          {SERVICES.map((s, i) => (
+            <Reveal key={s.title} delay={i * 130} className="cell">
+              <article className="card card--link">
+                <span className="card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    {ICONS[s.icon]}
+                  </svg>
+                </span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
 
-              {/* Whole card is clickable via this link (stretched with CSS) */}
-              <a href={s.url} target="_blank" rel="noopener noreferrer" className="card__cta card__stretch">
-                {s.cta} <span aria-hidden="true">↗</span>
-              </a>
-
-              {s.telegram && (
-                <a
-                  href={s.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card__telegram"
-                  aria-label={`${s.title} on Telegram`}
-                  title="Join on Telegram"
-                >
-                  <TelegramIcon />
+                {/* Whole card is clickable via this link (stretched with CSS) */}
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="card__cta card__stretch">
+                  {s.cta} <span aria-hidden="true">↗</span>
                 </a>
-              )}
-            </article>
+
+                {s.telegram && (
+                  <a
+                    href={s.telegram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card__telegram"
+                    aria-label={`${s.title} on Telegram`}
+                    title="Join on Telegram"
+                  >
+                    <TelegramIcon />
+                  </a>
+                )}
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>
