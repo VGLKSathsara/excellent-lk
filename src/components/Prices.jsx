@@ -1,4 +1,4 @@
-import { PRICING } from "../data/site.js";
+import { PRICING, ABOUT } from "../data/site.js";
 import Reveal from "./Reveal.jsx";
 
 function PriceIcon({ kind }) {
@@ -23,6 +23,9 @@ export default function Prices() {
           {PRICING.plans.map((plan, index) => {
             const hasOffer = plan.featured && offer.active;
             const price = hasOffer ? offer.promotionalPrice : plan.price;
+            const whatsapp = ABOUT.socials.find(s => s.id === "whatsapp").url;
+            const message = `Hi Vexlor! I am interested in the ${plan.name} plan (${formatPrice(price)}). ${plan.period}.${plan.name === "Standard" ? " I would like to discuss my Forex or Crypto market choice." : ""} Please share purchase details.`;
+            const purchaseUrl = `${whatsapp}?text=${encodeURIComponent(message)}`;
             const savings = hasOffer ? Math.round((1 - price / offer.regularPrice) * 100) : 0;
 
             return (
@@ -59,7 +62,7 @@ export default function Prices() {
                     ))}
                   </ul>
 
-                  <a className={`btn btn--block pricing-card__cta${plan.featured ? " pricing-card__cta--featured" : ""}`} href="#connect">
+                  <a className={`btn btn--block pricing-card__cta${plan.featured ? " pricing-card__cta--featured" : ""}`} href={purchaseUrl} target="_blank" rel="noopener noreferrer">
                     {plan.cta}
                     <span className={`pricing-cta-arrow${index === 0 ? " pricing-cta-arrow--starter" : ""}`} aria-hidden="true"><PriceIcon kind="arrow"/></span>
                   </a>
