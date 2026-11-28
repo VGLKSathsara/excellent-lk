@@ -27,16 +27,20 @@ function ParticleMark() {
       ctx.clearRect(0,0,w,h);
       const seconds=motion.matches?7.6:Math.max(0,(t-start)/1000);
       const clamp=n=>Math.max(0,Math.min(1,n));
-      const smooth=n=>{const x=clamp(n);return x*x*(3-2*x);};
+      const smooth=n=>{const x=clamp(n);return x*x*x*(x*(x*6-15)+10);};
       const q=smooth((seconds-3.6)/1.5),r=smooth((seconds-6.1)/1.5);
       const angle=(q-r)*Math.PI/2;
-      const s=Math.min(w,h)*.76*(1-.27*r),k=clamp(seconds/2.6),e=1-(1-k)**3;
-      const textAlpha=smooth((seconds-3.8)/1.2);
+      const s=Math.min(w,h)*.76*(1-.27*r),k=clamp(seconds/2.6),e=smooth(k);
+      const textAlpha=smooth((seconds-4.0)/1.1);
       ctx.globalAlpha=textAlpha;
       ctx.fillStyle=document.documentElement.dataset.theme==="dark"?"#82D7D0":"#226E67";
       ctx.font="600 "+Math.min(w*(.15-.025*r),58)+"px system-ui";
       ctx.textAlign="center";ctx.textBaseline="middle";
-      ctx.fillText("VEXLOR",w/2,h/2+h*.23*r,w*.88);
+      ctx.save();
+      ctx.translate(w/2,h/2+h*.23*r);
+      ctx.scale(.92+.08*textAlpha, .92+.08*textAlpha);
+      ctx.fillText("VEXLOR",0,0,w*.88);
+      ctx.restore();
       ctx.globalAlpha=1;
       for(const p of points){
         const px=p.x*e+Math.cos(p.a)*p.r*(1-e),py=p.y*e+Math.sin(p.a)*p.r*(1-e);
@@ -44,12 +48,12 @@ function ParticleMark() {
         let x=w/2+s*px*Math.cos(angle)*perspective,y=h/2-h*.15*r+s*py*perspective;
         if(!motion.matches&&mouse){const dx=x-mouse.x,dy=y-mouse.y,d=Math.hypot(dx,dy);if(d>0&&d<65){x+=dx/d*(65-d)*.42;y+=dy/d*(65-d)*.42;}}
         ctx.fillStyle=p.light?"#82D7D0":"#3E9C94";
-        ctx.globalAlpha=(.55+.45*e)*(1-q+r);ctx.beginPath();ctx.arc(x,y,Math.max(.65,s/240*.78),0,Math.PI*2);ctx.fill();
+        ctx.globalAlpha=(.55+.45*e)*Math.cos(angle);ctx.beginPath();ctx.arc(x,y,Math.max(.65,s/240*.78),0,Math.PI*2);ctx.fill();
       }
       ctx.globalAlpha=1;
       if(!motion.matches&&(seconds<7.6||mouse))frame=requestAnimationFrame(draw);
     }
-    function wake(){if(frame)cancelAnimationFrame(frame);frame=requestAnimationFrame(draw);}
+    function wake(){if(!frame)frame=requestAnimationFrame(draw);}
     const ro=new ResizeObserver(()=>{resize();wake();});ro.observe(canvas);
     const io=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;wake();});io.observe(canvas);
     const theme=new MutationObserver(wake);theme.observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
