@@ -19,21 +19,35 @@ function ParticleMark() {
     const motion=matchMedia("(prefers-reduced-motion: reduce)");
     let w=0,h=0,frame=0,visible=true,mouse=null,start=performance.now();
     function resize(){const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio,2);w=r.width;h=r.height;canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);ctx.setTransform(d,0,0,d,0,0);}
-    function pointer(e){const r=canvas.getBoundingClientRect();mouse={x:e.clientX-r.left,y:e.clientY-r.top};}
-    function clear(){mouse=null;}
+    function pointer(e){const r=canvas.getBoundingClientRect();mouse={x:e.clientX-r.left,y:e.clientY-r.top};wake();}
+    function clear(){mouse=null;wake();}
     function draw(t){
       frame=0;
       if(!visible||document.hidden)return;
       ctx.clearRect(0,0,w,h);
-      const s=Math.min(w,h)*.76,k=motion.matches?1:Math.min(1,Math.max(0,(t-start)/2600)),e=1-(1-k)**3;
+      const seconds=motion.matches?7.6:Math.max(0,(t-start)/1000);
+      const clamp=n=>Math.max(0,Math.min(1,n));
+      const smooth=n=>{const x=clamp(n);return x*x*(3-2*x);};
+      const q=smooth((seconds-3.6)/1.5),r=smooth((seconds-6.1)/1.5);
+      const angle=(q-r)*Math.PI/2;
+      const s=Math.min(w,h)*.76*(1-.27*r),k=clamp(seconds/2.6),e=1-(1-k)**3;
+      const textAlpha=smooth((seconds-3.8)/1.2);
+      ctx.globalAlpha=textAlpha;
+      ctx.fillStyle=document.documentElement.dataset.theme==="dark"?"#82D7D0":"#226E67";
+      ctx.font="600 "+Math.min(w*(.15-.025*r),58)+"px system-ui";
+      ctx.textAlign="center";ctx.textBaseline="middle";
+      ctx.fillText("VEXLOR",w/2,h/2+h*.23*r,w*.88);
+      ctx.globalAlpha=1;
       for(const p of points){
-        let x=w/2+s*(p.x*e+Math.cos(p.a)*p.r*(1-e)),y=h/2+s*(p.y*e+Math.sin(p.a)*p.r*(1-e));
+        const px=p.x*e+Math.cos(p.a)*p.r*(1-e),py=p.y*e+Math.sin(p.a)*p.r*(1-e);
+        const perspective=1/(1+px*Math.sin(angle)*.6);
+        let x=w/2+s*px*Math.cos(angle)*perspective,y=h/2-h*.15*r+s*py*perspective;
         if(!motion.matches&&mouse){const dx=x-mouse.x,dy=y-mouse.y,d=Math.hypot(dx,dy);if(d>0&&d<65){x+=dx/d*(65-d)*.42;y+=dy/d*(65-d)*.42;}}
         ctx.fillStyle=p.light?"#82D7D0":"#3E9C94";
-        ctx.globalAlpha=.55+.45*e;ctx.beginPath();ctx.arc(x,y,Math.max(.65,s/240*.78),0,Math.PI*2);ctx.fill();
+        ctx.globalAlpha=(.55+.45*e)*(1-q+r);ctx.beginPath();ctx.arc(x,y,Math.max(.65,s/240*.78),0,Math.PI*2);ctx.fill();
       }
       ctx.globalAlpha=1;
-      if(!motion.matches)frame=requestAnimationFrame(draw);
+      if(!motion.matches&&(seconds<7.6||mouse))frame=requestAnimationFrame(draw);
     }
     function wake(){if(frame)cancelAnimationFrame(frame);frame=requestAnimationFrame(draw);}
     const ro=new ResizeObserver(()=>{resize();wake();});ro.observe(canvas);
