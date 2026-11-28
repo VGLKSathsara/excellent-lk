@@ -26,11 +26,10 @@ function ParticleMark() {
       if(!visible||document.hidden)return;
       ctx.clearRect(0,0,w,h);
       const s=Math.min(w,h)*.76,k=motion.matches?1:Math.min(1,Math.max(0,(t-start)/2600)),e=1-(1-k)**3;
-      const dark=document.documentElement.dataset.theme==="dark";
       for(const p of points){
         let x=w/2+s*(p.x*e+Math.cos(p.a)*p.r*(1-e)),y=h/2+s*(p.y*e+Math.sin(p.a)*p.r*(1-e));
         if(!motion.matches&&mouse){const dx=x-mouse.x,dy=y-mouse.y,d=Math.hypot(dx,dy);if(d>0&&d<65){x+=dx/d*(65-d)*.42;y+=dy/d*(65-d)*.42;}}
-        ctx.fillStyle=dark?(p.light?"#82D7D0":"#3E9C94"):(p.light?"#398D85":"#226E67");
+        ctx.fillStyle=p.light?"#82D7D0":"#3E9C94";
         ctx.globalAlpha=.55+.45*e;ctx.beginPath();ctx.arc(x,y,Math.max(.65,s/240*.78),0,Math.PI*2);ctx.fill();
       }
       ctx.globalAlpha=1;
