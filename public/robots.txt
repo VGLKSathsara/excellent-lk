@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://excellent-lk.vercel.app/sitemap.xml
+Sitemap: https://vexlorlk.vercel.app/sitemap.xml
