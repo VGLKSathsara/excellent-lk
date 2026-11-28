@@ -2,7 +2,7 @@
 
 Official website of **Excellent.lk** – a growing Sri Lankan digital brand. This repo is the **foundation** of the site: a fast, single-page React app that lists our services and links to them.
 
-- **Live site:** https://excellent-lk.vercel.app (auto-deploys from `main` on Vercel)
+- **Live site:** https://vexlorlk.vercel.app (auto-deploys from `main` on Vercel)
 - **Stack:** React 18 + Vite 5, plain CSS (no UI library, no router)
 - **Status:** Foundation complete – content is partly placeholder (see [Status](#status))
 
