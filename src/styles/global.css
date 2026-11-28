@@ -691,3 +691,12 @@ h1,h2,h3{font-family:var(--font-brand);font-weight:600}
 @media(max-width:1050px){.pricing-grid[data-count="4"]{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}}
 @media(max-width:560px){.pricing-grid[data-count="4"]{grid-template-columns:1fr;max-width:420px;gap:12px}.pricing-grid[data-count="4"] .pricing-card{padding:18px}.pricing-card__top:empty{min-height:0}}
 @media(prefers-reduced-motion:reduce){.pricing-cell.is-in .pricing-cta-arrow--starter svg{animation:none}}
+
+/* Final usability polish */
+.pricing-card__cta,.theme-toggle,.burger{min-height:44px}
+.theme-toggle,.burger{min-width:44px}
+.pricing-card__price-row{flex-wrap:wrap}
+.pricing-feature__note{overflow-wrap:anywhere}
+:focus-visible{outline-offset:4px}
+.vex-art>span{color:#82D7D0}
+@media(max-width:560px){.pricing-card__subtitle,.pricing-card__period,.pricing-feature{font-size:14px}.pricing-card__cta{font-size:14px}}

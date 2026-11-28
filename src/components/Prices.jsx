@@ -74,7 +74,7 @@ export default function Prices() {
         </div>
 
         <Reveal className="pricing-trust">
-          <span aria-hidden="true">✦</span> Clear plans. No confusing bundles. Choose what fits your trading.
+          <span aria-hidden="true"><PriceIcon kind="sparkle" /></span> Clear plans. No confusing bundles. Choose what fits your trading.
         </Reveal>
       </div>
     </section>
