@@ -668,3 +668,26 @@ h1,h2,h3{font-family:var(--font-brand);font-weight:600}
 .pricing-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 @media(max-width:640px){.pricing-grid[data-count="4"]{grid-template-columns:1fr;gap:16px}.pricing-card__top:empty{min-height:0}.pricing-grid[data-count="4"] .pricing-card{padding:24px}}
 @media(prefers-reduced-motion:reduce){.pricing-cta-arrow,.pricing-cta-arrow--starter svg{animation:none;transition:none}.pricing-card__cta:hover .pricing-cta-arrow,.pricing-card__cta:focus-visible .pricing-cta-arrow,.pricing-card__cta:active .pricing-cta-arrow{transform:none}}
+
+/* Compact pricing layout: four plans on wide screens, two on tablets. */
+.pricing-grid[data-count="4"]{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1120px;margin-top:30px}
+.pricing-grid[data-count="4"] .pricing-card{padding:18px;border-radius:18px}
+.pricing-grid[data-count="4"] .pricing-card__price{font-size:clamp(32px,3vw,40px);letter-spacing:-1.5px}
+.pricing-card__top{min-height:24px}
+.pricing-card__name{font-size:21px;margin-top:4px}
+.pricing-card__subtitle,.pricing-card__period,.pricing-feature{font-size:13px;line-height:1.45}
+.pricing-card__price-row{margin-top:14px;gap:6px}
+.pricing-card__old-price{font-size:15px}
+.pricing-card__period{margin-top:6px}
+.pricing-card__offer{margin-top:10px;padding:7px 9px;font-size:11px}
+.pricing-card__divider{margin:14px 0 12px}
+.pricing-card__includes{margin-bottom:10px;font-size:12px}
+.pricing-card__features{gap:9px;margin-bottom:18px}
+.pricing-feature__note,.pricing-card__footnote{font-size:11px}
+.pricing-card__cta{min-height:44px;padding:10px 12px;font-size:13px}
+.pricing-card__footnote{margin-top:8px}
+.pricing-cta-arrow--starter svg{animation:none}
+.pricing-cell.is-in .pricing-cta-arrow--starter svg{animation:pricing-arrow-nudge 1.6s ease-in-out 2}
+@media(max-width:1050px){.pricing-grid[data-count="4"]{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}}
+@media(max-width:560px){.pricing-grid[data-count="4"]{grid-template-columns:1fr;max-width:420px;gap:12px}.pricing-grid[data-count="4"] .pricing-card{padding:18px}.pricing-card__top:empty{min-height:0}}
+@media(prefers-reduced-motion:reduce){.pricing-cell.is-in .pricing-cta-arrow--starter svg{animation:none}}
